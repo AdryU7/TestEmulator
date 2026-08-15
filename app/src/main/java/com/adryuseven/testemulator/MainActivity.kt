@@ -49,9 +49,19 @@ fun MyText() {
             style = MaterialTheme.typography.headlineMedium.copy(
                 fontFamily = FontFamily.Serif,
                 fontSize = 55.sp,
-                fontWeight = FontWeight.SemiBold
+                //fontWeight = FontWeight.SemiBold
             ),
             color = MaterialTheme.colorScheme.primary
+        )
+
+        MiTextReusable(
+            text = "Texto reutilizable",
+            fontSize = 30.sp
+        )
+        MiTextReusable(
+            text = "Texto reutilizable 2.0",
+            fontSize = 15.sp,
+            fontFamily = FontFamily.Monospace
         )
     }
 }
