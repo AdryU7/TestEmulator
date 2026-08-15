@@ -45,23 +45,22 @@ fun MyText() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Soy un Texto!!",
-            style = MaterialTheme.typography.headlineMedium.copy(
-                fontFamily = FontFamily.Serif,
-                fontSize = 55.sp,
-                //fontWeight = FontWeight.SemiBold
-            ),
-            color = MaterialTheme.colorScheme.primary
-        )
 
-        MiTextReusable(
-            text = "Texto reutilizable",
-            fontSize = 30.sp
-        )
-        MiTextReusable(
-            text = "Texto reutilizable 2.0",
-            fontSize = 15.sp,
-            fontFamily = FontFamily.Monospace
-        )
     }
+}
+
+@Composable
+fun Greetings(name: String) {
+    Text(text = "Hi, $name!")
+}
+
+@Preview(
+    name = "Vista previa funcion",
+    showBackground = true,
+    widthDp = 200,
+    heightDp = 100
+)
+@Composable
+fun GreetingsPreview(){
+    Greetings(name = "Jorge")
 }
