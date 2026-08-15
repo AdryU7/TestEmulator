@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -44,11 +45,20 @@ fun MyText() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = "Soy un Texto!!",
-            style = TextStyle(
-                color = Color.Magenta,
-                fontSize = 30.sp,
-                fontWeight = FontWeight.ExtraBold,
-            )
+            style = MaterialTheme.typography.headlineMedium,
+            color = MaterialTheme.colorScheme.primary
         )
+
+        Text(text = "Encabezado grande",
+            style = MaterialTheme.typography.displayLarge,
+            color = MaterialTheme.colorScheme.primary)
+
+        Text(text = "Cuerpo del texto",
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.primary)
+
+        Text(text = "Etiqueta pequeña",
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.primary)
     }
 }

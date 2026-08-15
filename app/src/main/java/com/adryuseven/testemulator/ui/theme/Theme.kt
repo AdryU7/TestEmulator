@@ -37,7 +37,7 @@ private val LightColorScheme = lightColorScheme(
 fun TestEmulatorTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false, // true = vincular el color con el fondo definido en el telefono
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
