@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -45,20 +46,12 @@ fun MyText() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = "Soy un Texto!!",
-            style = MaterialTheme.typography.headlineMedium,
+            style = MaterialTheme.typography.headlineMedium.copy(
+                fontFamily = FontFamily.Serif,
+                fontSize = 55.sp,
+                fontWeight = FontWeight.SemiBold
+            ),
             color = MaterialTheme.colorScheme.primary
         )
-
-        Text(text = "Encabezado grande",
-            style = MaterialTheme.typography.displayLarge,
-            color = MaterialTheme.colorScheme.primary)
-
-        Text(text = "Cuerpo del texto",
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.primary)
-
-        Text(text = "Etiqueta pequeña",
-            style = MaterialTheme.typography.labelSmall,
-            color = MaterialTheme.colorScheme.primary)
     }
 }
