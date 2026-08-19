@@ -18,6 +18,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -50,14 +51,14 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TestEmulatorTheme {
-                MyButton()
+                Components()
             }
         }
     }
 }
 
 @Composable
-fun MyButton() {
+fun Components() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -82,6 +83,7 @@ fun MyButton() {
         MyOutlinedButton()
         MyTextButton()
         MyImage()
+        MyIcon()
     }
 }
 
@@ -166,5 +168,15 @@ fun MyImage() {
             .clip(CircleShape)
             .border(2.dp, Color.Yellow, CircleShape),
         contentScale = ContentScale.Crop
+    )
+}
+
+@Composable
+fun MyIcon() {
+    Icon(
+        imageVector = Icons.Default.Home,
+        contentDescription = "Descripcion del icono",
+        modifier = Modifier.size(35.dp),
+        tint = MaterialTheme.colorScheme.primary
     )
 }
