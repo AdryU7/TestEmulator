@@ -11,7 +11,9 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -80,9 +82,13 @@ fun Components() {
             Text(text = "Presionar")
         }
 
+        Spacer(modifier = Modifier.height(30.dp))
         MyOutlinedButton()
+        Spacer(modifier = Modifier.height(30.dp))
         MyTextButton()
+        Spacer(modifier = Modifier.height(30.dp))
         MyImage()
+        Spacer(modifier = Modifier.height(30.dp))
         MyIcon()
     }
 }
