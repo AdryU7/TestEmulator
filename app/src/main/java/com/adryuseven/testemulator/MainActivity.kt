@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -24,8 +25,10 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
@@ -69,17 +72,18 @@ fun Components() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Seccion 1",
-            style = MaterialTheme.typography.bodyLarge)
-
-        HorizontalDivider(
-            modifier = Modifier.padding(vertical = 15.dp),
-            thickness = 1.dp,
-            color = MaterialTheme.colorScheme.primary
+        CircularProgressIndicator(
+            modifier = Modifier.size(60.dp),
+            strokeWidth = 6.dp,
+            color = MaterialTheme.colorScheme.primary,
         )
 
-        Text(text = "Seccion 2",
-            style = MaterialTheme.typography.bodyLarge)
+        Spacer(modifier = Modifier.height(30.dp))
+
+        LinearProgressIndicator(
+            modifier = Modifier.fillMaxWidth(),
+            color = MaterialTheme.colorScheme.primary
+        )
     }
 }
 
@@ -105,7 +109,20 @@ fun Components() {
     Spacer(modifier = Modifier.height(30.dp))
     MyImage()
     Spacer(modifier = Modifier.height(30.dp))
-    MyIcon()*/
+    MyIcon()
+
+   == Horizontal Divider ==
+    Text(text = "Seccion 1",
+            style = MaterialTheme.typography.bodyLarge)
+
+        HorizontalDivider(
+            modifier = Modifier.padding(vertical = 15.dp),
+            thickness = 1.dp,
+            color = MaterialTheme.colorScheme.primary
+        )
+
+        Text(text = "Seccion 2",
+            style = MaterialTheme.typography.bodyLarge)*/
 
 @Composable
 fun MyOutlinedButton() {
