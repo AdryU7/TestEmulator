@@ -24,6 +24,7 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -68,30 +69,43 @@ fun Components() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Button(
-            onClick = {
+        Text(text = "Seccion 1",
+            style = MaterialTheme.typography.bodyLarge)
 
-            },
-            colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.colorScheme.primary,
-                contentColor = MaterialTheme.colorScheme.onPrimary
-            ),
-            shape = RoundedCornerShape(15.dp)
-        ) {
-            Icon(Icons.Default.Person, contentDescription = "Icono persona")
-            Text(text = "Presionar")
-        }
+        HorizontalDivider(
+            modifier = Modifier.padding(vertical = 15.dp),
+            thickness = 1.dp,
+            color = MaterialTheme.colorScheme.primary
+        )
 
-        Spacer(modifier = Modifier.height(30.dp))
-        MyOutlinedButton()
-        Spacer(modifier = Modifier.height(30.dp))
-        MyTextButton()
-        Spacer(modifier = Modifier.height(30.dp))
-        MyImage()
-        Spacer(modifier = Modifier.height(30.dp))
-        MyIcon()
+        Text(text = "Seccion 2",
+            style = MaterialTheme.typography.bodyLarge)
     }
 }
+
+/* == Previous Components ==
+    Button(
+        onClick = {
+
+        },
+        colors = ButtonDefaults.buttonColors(
+            containerColor = MaterialTheme.colorScheme.primary,
+            contentColor = MaterialTheme.colorScheme.onPrimary
+        ),
+        shape = RoundedCornerShape(15.dp)
+    ) {
+        Icon(Icons.Default.Person, contentDescription = "Icono persona")
+        Text(text = "Presionar")
+    }
+
+    Spacer(modifier = Modifier.height(30.dp))
+    MyOutlinedButton()
+    Spacer(modifier = Modifier.height(30.dp))
+    MyTextButton()
+    Spacer(modifier = Modifier.height(30.dp))
+    MyImage()
+    Spacer(modifier = Modifier.height(30.dp))
+    MyIcon()*/
 
 @Composable
 fun MyOutlinedButton() {
