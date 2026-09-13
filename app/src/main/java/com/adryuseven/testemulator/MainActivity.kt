@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -72,18 +73,18 @@ fun Components() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        CircularProgressIndicator(
-            modifier = Modifier.size(60.dp),
-            strokeWidth = 6.dp,
-            color = MaterialTheme.colorScheme.primary,
-        )
+        val backgroundColor = MaterialTheme.colorScheme.primary
 
-        Spacer(modifier = Modifier.height(30.dp))
-
-        LinearProgressIndicator(
-            modifier = Modifier.fillMaxWidth(),
-            color = MaterialTheme.colorScheme.primary
-        )
+        Canvas(
+            modifier = Modifier
+                .size(300.dp)
+                .padding(15.dp)
+        ) {
+            drawCircle(
+                color = backgroundColor,
+                radius = size.minDimension/4 // radius = 75
+            )
+        }
     }
 }
 
@@ -122,7 +123,22 @@ fun Components() {
         )
 
         Text(text = "Seccion 2",
-            style = MaterialTheme.typography.bodyLarge)*/
+            style = MaterialTheme.typography.bodyLarge)
+
+   == Circular and Linear Progress Indicator ==
+        CircularProgressIndicator(
+            modifier = Modifier.size(60.dp),
+            strokeWidth = 6.dp,
+            color = MaterialTheme.colorScheme.primary,
+        )
+
+        Spacer(modifier = Modifier.height(30.dp))
+
+        LinearProgressIndicator(
+            modifier = Modifier.fillMaxWidth(),
+            color = MaterialTheme.colorScheme.primary
+        )
+*/
 
 @Composable
 fun MyOutlinedButton() {
