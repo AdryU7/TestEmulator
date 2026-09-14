@@ -37,12 +37,16 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -77,11 +81,113 @@ class MainActivity : ComponentActivity() {
                 //MyLazyRowImages()
                 //MyLazyRowImageWeb()
                 //MyLazyVerticalGrid()
-                MyLazyHorizontalGrid()
+                //MyLazyHorizontalGrid()
+                //MyCard()
+                //MyElevatedCard()
+                MyOutlinedCard()
             }
         }
     }
 }
+// ==== CARDS ====
+// == CARD ==
+@Composable
+fun MyCard() {
+    Card(
+        modifier = Modifier.fillMaxWidth().padding(15.dp),
+        elevation = CardDefaults.cardElevation(4.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.image_card),
+                contentDescription = "Imagen del card",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(180.dp)
+                    .clip(RoundedCornerShape(8.dp)),
+                contentScale = ContentScale.Crop
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = "Titulo del Card",
+                style = MaterialTheme.typography.titleLarge,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = "Descripcion breve del contenido, escribe lo que quieras y si te gusta suscribete",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Button(
+                onClick = {},
+                modifier = Modifier.align(Alignment.End)
+            ) {
+                Text(text = "Presione aqui")
+            }
+        }
+    }
+}
+// == ELEVATED CARD ==
+@Composable
+fun MyElevatedCard() {
+    ElevatedCard(
+        modifier = Modifier.fillMaxWidth().padding(16.dp),
+        elevation = CardDefaults.elevatedCardElevation(
+            defaultElevation = 15.dp
+        )
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Text(
+                text = "Titulo de la tarjeta",
+                style = MaterialTheme.typography.titleMedium
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = "Este es un ejemplo de ElevatedCard en Jetpack Compose",
+                style = MaterialTheme.typography.bodyMedium
+            )
+        }
+    }
+}
+// == OUTLINED CARD ==
+@Composable
+fun MyOutlinedCard() {
+    OutlinedCard(
+        modifier = Modifier.fillMaxWidth().padding(16.dp),
+        shape = RoundedCornerShape(12.dp),
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary)
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Text(
+                text = "Titulo de la tarjeta",
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.primary
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = "Esta tarjeta tiene un borde que se usa para resaltar informacion sin sobrecargar la UI.",
+                style = MaterialTheme.typography.bodyMedium,
+            )
+            Spacer(modifier = Modifier.height(12.dp))
+            Button(
+                onClick = {},
+                modifier = Modifier.align(Alignment.End)
+            ) {
+                Text(text = "Presione aqui")
+            }
+        }
+    }
+}
+// ==== XXXXX ====
+
 // ==== LISTS ====
 // == LAZY COLUMN ==
 @Composable
