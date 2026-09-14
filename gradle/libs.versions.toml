@@ -11,6 +11,7 @@ composeBom = "2026.02.01"
 materialIconsCore = "1.7.8"
 materialIconsCoreVersion = "1.6.11"
 constraintLayoutV = "1.1.0"
+coilV = "2.2.2"
 
 [libraries]
 androidx-compose-material-icons-core = { module = "androidx.compose.material:material-icons-core", version.ref = "materialIconsCore" }
@@ -30,6 +31,7 @@ androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 constraintLayout = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "constraintLayoutV" }
+coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coilV" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

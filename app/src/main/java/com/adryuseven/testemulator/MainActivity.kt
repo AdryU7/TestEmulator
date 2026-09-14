@@ -20,12 +20,21 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -54,6 +63,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import coil.compose.AsyncImage
 import com.adryuseven.testemulator.ui.theme.TestEmulatorTheme
 
 class MainActivity : ComponentActivity() {
@@ -62,11 +72,221 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TestEmulatorTheme {
-                Components()
+                //Components()
+                //MyLazyRowText()
+                //MyLazyRowImages()
+                //MyLazyRowImageWeb()
+                //MyLazyVerticalGrid()
+                MyLazyHorizontalGrid()
             }
         }
     }
 }
+// ==== LISTS ====
+// == LAZY COLUMN ==
+@Composable
+fun MyLazyColumn() {
+    val itemsList = List(100) {"Elemento Nº $it"}
+
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+    ) {
+        item {
+            Text(
+                text = "Encabezado de la lista",
+                color = MaterialTheme.colorScheme.primary,
+                fontSize = 20.sp
+            )
+        }
+
+        items(itemsList) { element ->
+            Text(text = element, fontSize = 20.sp)
+        }
+
+        item {
+            Text(
+                text = "Pie de la lista",
+                color = MaterialTheme.colorScheme.primary,
+                fontSize = 20.sp
+            )
+        }
+    }
+}
+// == LAZY ROW ==
+@Composable
+fun MyLazyRowText() {
+    val itemsLanguages = listOf("Kotlin","JavaScript","Python","Java","Dart","PHP")
+
+    LazyRow(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        items(itemsLanguages) { language ->
+            Text(
+                text = language,
+                modifier = Modifier
+                    .padding(10.dp)
+                    .background(MaterialTheme.colorScheme.primary)
+                    .padding(16.dp),
+                color = Color.White,
+                fontSize = 20.sp,
+                style = MaterialTheme.typography.bodyMedium
+            )
+        }
+    }
+}
+
+@Composable
+fun MyLazyRowImages() {
+    val listImages = listOf(
+        R.drawable.perro,
+        R.drawable.zorro,
+        R.drawable.erizo,
+        R.drawable.loro,
+        R.drawable.conejo,
+        R.drawable.oso
+    )
+
+    LazyRow(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(20.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        items(listImages){image ->
+            Image(
+                painter = painterResource(id = image),
+                contentDescription = "Imagen del animal",
+                modifier = Modifier
+                    .size(180.dp)
+                    .clip(RoundedCornerShape(16.dp)),
+                contentScale = ContentScale.Crop
+            )
+        }
+    }
+}
+
+@Composable
+fun MyLazyRowImageWeb() {
+    val imageUrls = listOf(
+        "https://cdn.pixabay.com/photo/2012/04/26/21/56/arequipa-43281_1280.jpg",
+        "https://cdn.pixabay.com/photo/2021/11/10/14/27/lima-6784100_1280.jpg",
+        "https://cdn.pixabay.com/photo/2015/02/13/21/36/peru-635857_1280.jpg",
+        "https://cdn.pixabay.com/photo/2018/12/12/06/51/trujillo-3870245_1280.jpg",
+        "https://cdn.pixabay.com/photo/2012/04/26/21/56/arequipa-43282_1280.jpg"
+    )
+
+    LazyRow(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        items(imageUrls){imageUrl ->
+            AsyncImage(
+                model = imageUrl,
+                contentDescription = "Imagen de la url",
+                modifier = Modifier
+                    .size(180.dp)
+                    .clip(RoundedCornerShape(15.dp)),
+                contentScale = ContentScale.Crop
+            )
+        }
+    }
+}
+// == LAZY VERTICAL GRID ==
+@Composable
+fun MyLazyVerticalGrid() {
+    val myElements = List(20) {
+        "Elemento ${it+1}"
+    }
+
+    LazyVerticalGrid(
+        //columns = GridCells.Adaptive(120.dp), /*Ancho minimo de la celda*/
+        columns = GridCells.Fixed(2),
+        modifier = Modifier.fillMaxSize()
+    ) {
+        items(myElements){ myElement ->
+            GridItem(element = myElement)
+        }
+    }
+}
+@Composable
+fun GridItem(element: String) {
+    Box(
+        modifier = Modifier
+            .padding(8.dp)
+            .background(
+                color = MaterialTheme.colorScheme.primary,
+                shape = RoundedCornerShape(12.dp)
+            )
+            .fillMaxWidth()
+            .padding(16.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Icon(
+                imageVector = Icons.Default.Star,
+                contentDescription = "Iconos de la celda",
+                modifier = Modifier.size(60.dp)
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(text = element, fontWeight = FontWeight.Bold)
+        }
+    }
+}
+// == LAZY HORIZONTAL GRID ==
+@Composable
+fun MyLazyHorizontalGrid() {
+    val myElements = List(20) {
+        "Elemento ${it+1}"
+    }
+
+    LazyHorizontalGrid(
+        //rows = GridCells.Fixed(4),
+        rows = GridCells.Adaptive(100.dp), /*La celda debe tener minimo 100.dp de alto*/
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        items(myElements){ myElement ->
+            GridItemHorizontal(element = myElement)
+        }
+    }
+}
+@Composable
+fun GridItemHorizontal(element: String) {
+    Box(
+        modifier = Modifier
+            .width(120.dp)
+            .height(100.dp)
+            .clip(RoundedCornerShape(16.dp))
+            .background(MaterialTheme.colorScheme.primaryContainer)
+            .border(
+                2.dp,
+                MaterialTheme.colorScheme.primary,
+                RoundedCornerShape(16.dp)
+            ),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = element,
+            style = MaterialTheme.typography.bodyMedium,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center,
+            color = MaterialTheme.colorScheme.onPrimaryContainer
+        )
+    }
+}
+// ==== XXXXX ====
 
 @Composable
 fun Components() {
